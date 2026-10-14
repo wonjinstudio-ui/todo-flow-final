@@ -1,3 +1,5 @@
+'use client';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '@/store';
 import { toggleTheme, setFilter } from '@/store/todoSlice';
@@ -13,10 +15,10 @@ export const useSettings = () => {
     filter,
     // 💡 toggleTheme과 setFilter를 실행하는 핸들러 함수를 만드세요.
     handleToggleTheme: () => {
-      /* 코드를 작성하세요 */
+      dispatch(toggleTheme());
     },
     handleSetFilter: (f: FilterType) => {
-      /* 코드를 작성하세요 */
+      dispatch(setFilter(f));
     },
   };
 };

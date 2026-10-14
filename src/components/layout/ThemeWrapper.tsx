@@ -1,11 +1,10 @@
 'use client';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store';
+import { useSettings } from '@/hooks/useSettings';
 import { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 
 export default function ThemeWrapper({ children }: { children: React.ReactNode }) {
-  const { theme } = useSelector((state: RootState) => state.ui);
+  const { theme } = useSettings();
   const [mounted, setMounted] = useState(false);
 
   // 서버/클라이언트 하이드레이션 불일치 방지 (마운트 후 한 번만 실행되는 플래그)
@@ -19,10 +18,8 @@ export default function ThemeWrapper({ children }: { children: React.ReactNode }
   return (
     <div
       style={{
-        // 💡 [추가 과제] theme 값에 따라 배경색과 글자색을 삼항 연산자로 설정하세요.
-        //    예: theme === 'dark' ? '#1a1a1a' : '#f5f5f5'
-        backgroundColor: undefined /* TODO */,
-        color: undefined /* TODO */,
+        backgroundColor: theme === 'dark' ? '#1a1a1a' : '#f5f5f5',
+        color: theme === 'dark' ? '#ededed' : '#171717',
         minHeight: '100vh',
         transition: 'all 0.3s',
       }}

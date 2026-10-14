@@ -1,11 +1,10 @@
 'use client';
-import { useSelector } from 'react-redux';
-import { RootState } from '@/store';
+import { useSettings } from '@/hooks/useSettings';
 import TodoInput from '@/components/todo/TodoInput';
 import TodoList from '@/components/todo/TodoList';
 
 export default function Home() {
-  const { filter } = useSelector((state: RootState) => state.ui);
+  const { filter } = useSettings();
 
   return (
     <>
